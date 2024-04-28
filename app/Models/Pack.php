@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Pack extends Model
 {
     use HasFactory;
-    public $fillable = ['nombre', 'descripcion', 'imagen', 'precio', 'user_id'];
+    protected $fillable = ['nombre', 'descripcion', 'imagen', 'precio', 'disponible',  'user_id'];
 
     //relacion 1:n con user
     public function user(): BelongsTo

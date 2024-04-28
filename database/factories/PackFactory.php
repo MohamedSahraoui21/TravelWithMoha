@@ -19,11 +19,13 @@ class PackFactory extends Factory
     {
         fake()->addProvider(new \Mmo\Faker\PicsumProvider(fake()));
 
+
         return [
             'nombre' => fake()->unique()->sentence(),
             'descripcion' => fake()->text(),
             'precio' => fake()->randomFloat(2, 499, 999),
             'imagen' => 'packs/' . fake()->picsum('public/storage/packs', 640, 480, false),
+            'disponible' => fake()->randomElement(['SI', 'NO']),
             'user_id' => User::all()->random()->id,
         ];
     }

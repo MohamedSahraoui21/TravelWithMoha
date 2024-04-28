@@ -26,11 +26,12 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Mohamed Sahraoui',
             'email' => 'admin@email.com',
-            'password' => '$2y$10$.W8XGabrkfHzqZjXaK7psObBhAcquUkNKXsSoaCS9hPTwpPGxZcyu',
+            'password' => '$2y$10$DPu.8UMwN.xyppT3bTht8OKpkfhYja2RQ/1vHeS1l2VF9ZuxTTaVi', //admin
             'isAdmin' => 'SI',
-        ]); //  create a user named Mohamed sahraoui with admin privileges
+        ]); //
 
-        User::factory(20)->create();
+        User::factory(10)->create();
+
         Storage::deleteDirectory('packs');
         Storage::makeDirectory('packs');
         Pack::factory(10)->create();
