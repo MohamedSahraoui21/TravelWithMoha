@@ -4,6 +4,7 @@
             enctype="multipart/form-data">
             @csrf
             @method('put')
+            <br><br>
             <x-label for="titulo">Titulo</x-label>
             <x-input for="titulo" name="titulo" placeholhder="titulo..." class="w-full" value="{{ $post->titulo }}" />
             <x-input-error for="titulo" />

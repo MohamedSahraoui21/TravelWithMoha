@@ -3,6 +3,7 @@
 
         <div class="flex justify-end mb-4">
             <a href="{{ route('packs.create') }}">
+                <br><br>
                 <x-button>+ NUEVO</x-button>
             </a>
         </div>
@@ -32,11 +33,27 @@
                                 <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
                             </form>
                         </div>
+                        <form action="/session" method="POST" style="text-align: center;">
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type='hidden' name="total" value={{ $item->precio }}>
+                            <input type='hidden' name="productname" value={{ $item->nombre }}>
+                            <br>
+                            <button class="btn btn-primary btn-lg" type="submit" id="checkout-live-button"
+                                style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                            @if ($item->disponible == 'NO') opacity: 0.5;
+                                cursor: not-allowed; @endif
+                            "
+                                onmouseover="this.style.boxShadow='0 0 20px rgba(76, 175, 80, 0.8)'"
+                                onmouseout="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.2)'"
+                                @if ($item->disponible == 'NO') disabled @endif <i class="fa fa-shopping-cart"></i>
+                                Comprar Ahora
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endforeach
         </div>
-
         <div class="mt-6">
             {{ $packs->links() }}
         </div>

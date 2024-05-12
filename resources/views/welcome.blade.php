@@ -1,17 +1,26 @@
-<x-app-layout>
     <x-carpetaPrinc.principal>
-        <div>
-            <div class="flex items-center justify-center mb-6">
-                <div class="relative w-full max-w-lg">
-                    <input wire:model.live="search"
-                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                        type="search" placeholder="Buscar por título...">
-                    <div class="absolute top-0 left-0 flex items-center h-full ml-3">
-                        <i class="fas fa-search text-gray-400"></i>
-                    </div>
+        <div class="lg:col-span-1 lg:w-1/3 lg:ml-auto">
+            <div class="bg-gradient-to-r from-indigo-400 to-purple-600 rounded-lg shadow-md p-6 mb-6">
+
+                <h2 class="text-xl font-semibold text-white mb-4 " style="text-align: center">Meteo del Mundo</h2>
+                <div class="mb-4">
+                    <input id="ciudadInput"
+                        class="w-full px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                        type="text" placeholder="Ingrese una ciudad">
+                </div>
+                <div class="flex justify-center">
+                    <button id="BtnBuscar"
+                        class="px-6 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none">Buscar</button>
+                </div>
+
+                <div id="weatherContainer" class="hidden mt-4">
+                    <h2 id="nombreCiudad" class="text-lg font-semibold text-white mb-2"></h2>
+                    <div id="detallesTiempo"></div>
                 </div>
             </div>
-            {{-- Resultados de la búsqueda --}}
+        </div>
+        <div>
+
             @if ($posts->count())
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($posts as $articulo)
@@ -28,26 +37,22 @@
                                     <h2 class="text-xl font-semibold text-gray-800 truncate">{{ $articulo->titulo }}
                                     </h2>
                                 </a>
-                                <p class="text-sm text-blue-900 italic mb-2">{{ $articulo->user->email }}</p>
+                                <p class="text-sm text-blue-900 italic mb-2">{{ $articulo->user->name }}</p>
 
                                 <div class="flex items-center justify-between text-sm text-gray-600">
                                     <div>
-                                        <i class="fas fa-heart text-red-500 mr-1"></i>
-                                        {{-- <span>{{ $articulo->usersLike->count() }}</span> --}}
-                                    </div>
-                                    {{-- @auth
-                                        <button wire:click="like({{ $articulo->id }})" @class([
-                                            ' text-white font-semibold py-1 px-3 rounded focus:outline-none',
-                                            'bg-blue-500 hover:bg-blue-600' => in_array(
-                                                auth()->user()->id,
-                                                $articulo->usersLike->pluck('id')->toArray()),
-                                            'bg-gray-500 hover:bg-gray-600' => !in_array(
-                                                auth()->user()->id,
-                                                $articulo->usersLike->pluck('id')->toArray()),
-                                        ])>
-                                            <i class="far fa-thumbs-up"></i> Like
+                                        <button wire:click="like({{ $articulo }})">
+                                            <i @class([
+                                                'fas fa-heart',
+                                                'text-red-500' => in_array($articulo->id, $postslikes),
+                                            ])>
+                                                <span>
+                                                    {{ $articulo->likes()->count() }}
+                                                </span>
+                                            </i>
                                         </button>
-                                    @endauth --}}
+                                    </div>
+
                                 </div>
                             </div>
                         </article>
@@ -64,5 +69,42 @@
             @endif
 
         </div>
+
     </x-carpetaPrinc.principal>
-</x-app-layout>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const BtnBuscar = document.getElementById("BtnBuscar");
+            const ciudadInput = document.getElementById("ciudadInput");
+            const weatherContainer = document.getElementById("weatherContainer");
+            const nombreCiudad = document.getElementById("nombreCiudad");
+            const detallesTiempo = document.getElementById("detallesTiempo");
+
+            BtnBuscar.addEventListener("click", function() {
+                const ciudad = ciudadInput.value.trim();
+                const apiKey = 'df4fe49b3d432afbdf255bfa021c03c0';
+
+
+                if (ciudad !== "") {
+                    fetch(
+                            `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`
+                        )
+                        .then(response => response.json())
+                        .then(data => {
+                            detallesTiempo.innerHTML = `
+                        <div>Temperatura: ${data.main.temp}°C</div>
+                        <div>Descripción: ${data.weather[0].description}</div>
+                        <div>Humedad: ${data.main.humidity}%</div>
+                    `;
+                            weatherContainer.classList.remove("hidden");
+                        })
+                        .catch(error => {
+                            console.error("Error al obtener el tiempo:", error);
+                            nombreCiudad.textContent = "Error al obtener el tiempo.";
+                            detallesTiempo.innerHTML = "";
+                            //error
+                            weatherContainer.classList.remove("hidden");
+                        });
+                }
+            });
+        });
+    </script>

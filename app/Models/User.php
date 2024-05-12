@@ -58,4 +58,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function likeBy()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+
+    public function getArticlesLikesId()
+    {
+        $ids = [];
+        foreach ($this->likeBy as $post) {
+            $ids[] = $post->id;
+        }
+        return $ids;
+    }
 }

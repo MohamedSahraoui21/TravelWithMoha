@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\Socialite\GoogleController;
+use App\Livewire\Home;
+use App\Mail\ContactanosMailable;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $posts = Post::orderby('id', 'desc')->paginate(5);
-    return view('welcome', compact('posts'));
-})->name('home');
+Route::get('/', Home::class)->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -42,3 +43,18 @@ Route::middleware([
     })->name('dashboard');
     Route::resource('packs', PackController::class);
 });
+
+
+
+//PAGO SEGURO
+Route::get('/checkout', 'App\Http\Controllers\PackController@checkout')->name('checkout');
+Route::post('/session', 'App\Http\Controllers\PackController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\PackController@success')->name('success');
+
+//MAILABLE
+Route::get('contactanos', [ContactanosController::class, 'pintarFormulario'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'procesarFormulario'])->name('contactanos.procesar');
+
+//Google
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');

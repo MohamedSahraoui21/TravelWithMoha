@@ -32,11 +32,11 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        Storage::deleteDirectory('packs');
-        Storage::makeDirectory('packs');
-        Pack::factory(10)->create();
-        Storage::deleteDirectory('posts');
-        Storage::makeDirectory('posts');
-        Post::factory(20)->create();
+        // Storage::deleteDirectory('packs');
+        // Storage::makeDirectory('packs');
+        // Pack::factory(10)->create();
+        // Storage::deleteDirectory('posts');
+        // Storage::makeDirectory('posts');
+        // Post::factory(20)->create();
     }
 }

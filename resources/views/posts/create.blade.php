@@ -3,6 +3,7 @@
 
         <form class="mx-auto w-3/4" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <br><br>
             <x-label for="titulo">Titulo</x-label>
             <x-input for="titulo" name="titulo" placeholhder="titulo..." class="w-full" value="{{ old('titulo') }}" />
             <x-input-error for="titulo" />
