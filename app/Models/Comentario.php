@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Post extends Model
+class Comentario extends Model
 {
     use HasFactory;
-    protected $fillable = ['titulo', 'contenido', 'imagen', 'user_id'];
+    protected $fillable = ['content', 'user_id', 'post_id'];
 
     //relacion 1:n con user
     public function user(): BelongsTo
@@ -17,14 +17,9 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likes()
+    //relacion 1:n con post
+    public function post(): BelongsTo
     {
-        return $this->belongsToMany(User::class);
-    }
-
-
-    public function comentario()
-    {
-        return $this->hasMany(Comentario::class);
+        return $this->belongsTo(Post::class);
     }
 }

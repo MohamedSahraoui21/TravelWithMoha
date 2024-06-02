@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Storage;
 
 class PackController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['index', 'show', 'checkout', 'session', 'success']);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $packs = Pack::where('user_id', '=', auth()->user()->id)->orderby('id', 'desc')->paginate(5);
+        $packs = Pack::orderby('id', 'desc')->paginate(5);
         return view('packs.index', compact('packs'));
     }
 
@@ -32,12 +37,12 @@ class PackController extends Controller
     {
         $request->validate([
             'nombre' => ['required', 'string', 'min:3', 'unique:packs,nombre'],
-            'descripcion' => ['required', 'string', 'min:3', 'unique:packs,nombre'],
-            'diponible' => ['nullable'],
-            'precio' => ['required', 'decimal:0,2', 'min:0', 'max:9999.99'],
+            'descripcion' => ['required', 'string', 'min:3', 'unique:packs,descripcion'],
+            'disponible' => ['nullable'],
+            'precio' => ['required', 'numeric', 'min:0', 'max:9999.99'],
             'imagen' => ['nullable', 'image', 'max:2048'],
-
         ]);
+
         Pack::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
@@ -45,11 +50,10 @@ class PackController extends Controller
             'precio' => $request->precio,
             'imagen' => ($request->imagen) ? $request->imagen->store('packs') : "default.png",
             'user_id' => auth()->user()->id,
-
         ]);
+
         return redirect()->route('packs.index')->with('mensaje', 'Producto Creado Correctamente');
     }
-
 
     /**
      * Display the specified resource.
@@ -73,12 +77,13 @@ class PackController extends Controller
     public function update(Request $request, Pack $pack)
     {
         $request->validate([
-            'nombre' => ['required', 'string', 'min:3', 'unique:packs,nombre' . $pack->id],
-            'descripcion' => ['required', 'string', 'min:3', 'unique:packs,nombre'],
-            'diponible' => ['nullable'],
-            'precio' => ['required', 'decimal:0,2', 'min:0', 'max:9999.99'],
+            'nombre' => ['required', 'string', 'min:3', 'unique:packs,nombre,' . $pack->id],
+            'descripcion' => ['required', 'string', 'min:3', 'unique:packs,descripcion,' . $pack->id],
+            'disponible' => ['nullable'],
+            'precio' => ['required', 'numeric', 'min:0', 'max:9999.99'],
             'imagen' => ['nullable', 'image', 'max:2048'],
         ]);
+
         $ruta = $pack->imagen;
         if ($request->imagen) {
             if (basename($pack->imagen) != 'default.png') {
@@ -86,14 +91,15 @@ class PackController extends Controller
             }
             $ruta = $request->imagen->store('packs');
         }
+
         $pack->update([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'disponible' => ($request->disponible) ? "SI" : "NO",
             'precio' => $request->precio,
             'imagen' => $ruta,
-            'user_id' => auth()->user()->id,
         ]);
+
         return redirect()->route('packs.index')->with('mensaje', 'Pack editado correctamente');
     }
 
@@ -109,23 +115,19 @@ class PackController extends Controller
         return redirect()->route('packs.index')->with('mensaje', 'Pack Borrado');
     }
 
-
     public function checkout()
     {
-        $packs = Pack::where('user_id', '=', auth()->user()->id)->orderby('id', 'desc')->paginate(5);
+        $packs = Pack::orderby('id', 'desc')->paginate(5);
         return view('packs.index', compact('packs'));
     }
 
     public function session(Request $request)
     {
-
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
-
 
         $productname = $request->get('productname');
         $totalprice = $request->get('total');
-        $two0 = "00";
-        $total = "$totalprice$two0";
+        $total = $totalprice * 100; // Stripe requires amount in cents
 
         $session = \Stripe\Checkout\Session::create([
             'line_items'  => [
@@ -139,7 +141,6 @@ class PackController extends Controller
                     ],
                     'quantity'   => 1,
                 ],
-
             ],
             'mode'        => 'payment',
             'success_url' => route('success'),
@@ -148,8 +149,9 @@ class PackController extends Controller
 
         return redirect()->away($session->url);
     }
+
     public function success()
     {
-        return "Muchas gracias por tu Confiaza ya se ha procesado el pago, luego vas a recibir un correo con todos los detalles";
+        return "Muchas gracias por tu confianza. El pago se ha procesado correctamente. Recibirás un correo con todos los detalles.";
     }
 }

@@ -13,10 +13,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:flex sm:ms-10">
-
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')" class="text-white">
                         {{ __('Home') }}
                     </x-nav-link>
+
                     @auth
                         @if (Auth::user()->isAdmin == 'SI')
                             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white">
@@ -34,6 +34,7 @@
                         {{ __('Contactanos') }}
 
                     </x-nav-link>
+
                 </div>
             </div>
 

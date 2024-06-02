@@ -72,4 +72,10 @@ class User extends Authenticatable
         }
         return $ids;
     }
+
+
+    public function comentario()
+    {
+        return $this->hasMany(Comentario::class);
+    }
 }

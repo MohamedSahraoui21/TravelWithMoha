@@ -2,10 +2,12 @@
     <x-carpetaPrinc.principal>
 
         <div class="flex justify-end mb-4">
-            <a href="{{ route('packs.create') }}">
-                <br><br>
-                <x-button>+ NUEVO</x-button>
-            </a>
+            @if (Auth::user()->isAdmin == 'SI')
+                <a href="{{ route('packs.create') }}">
+                    <br><br>
+                    <x-button>+ NUEVO</x-button>
+                </a>
+            @endif
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -25,19 +27,21 @@
                         <div class="mt-4 flex justify-end">
                             <a href="{{ route('packs.show', $item->id) }}"
                                 class="text-blue-500 hover:underline mr-2">Ver Detalles</a>
-                            <a href="{{ route('packs.edit', $item->id) }}"
-                                class="text-yellow-500 hover:underline mr-2">Editar</a>
-                            <form action="{{ route('packs.destroy', $item->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
+                            @if (Auth::user()->isAdmin == 'SI')
+                                <a href="{{ route('packs.edit', $item->id) }}"
+                                    class="text-yellow-500 hover:underline mr-2">Editar</a>
+                                <form action="{{ route('packs.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
+                            @endif
                             </form>
                         </div>
                         <form action="/session" method="POST" style="text-align: center;">
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type='hidden' name="total" value={{ $item->precio }}>
-                            <input type='hidden' name="productname" value={{ $item->nombre }}>
+                            <input type='hidden' name="total" value="{{ $item->precio }}">
+                            <input type='hidden' name="productname" value="{{ $item->nombre }}">
                             <br>
                             <button class="btn btn-primary btn-lg" type="submit" id="checkout-live-button"
                                 style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -47,6 +51,7 @@
                                 onmouseover="this.style.boxShadow='0 0 20px rgba(76, 175, 80, 0.8)'"
                                 onmouseout="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.2)'"
                                 @if ($item->disponible == 'NO') disabled @endif <i class="fa fa-shopping-cart"></i>
+
                                 Comprar Ahora
                             </button>
                         </form>
