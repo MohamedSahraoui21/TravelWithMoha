@@ -28,7 +28,7 @@
                     {{ $pack->updated_at->format('d/m/Y, h:i:s') }}
                 </p>
                 <div class="flex mt-2 flex-row-reverse my-2">
-                    <a href="{{ route('packs.index') }}">
+                    <a href="{{ route('home') }}">
                         <x-button>Volver</x-button>
                     </a>
                 </div>

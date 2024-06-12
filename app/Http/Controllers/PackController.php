@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PackController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin')->except(['index', 'show', 'checkout', 'session', 'success']);
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -20,6 +17,11 @@ class PackController extends Controller
     {
         $packs = Pack::orderby('id', 'desc')->paginate(5);
         return view('packs.index', compact('packs'));
+    }
+    public function indexPublic()
+    {
+        $packs = Pack::orderby('id', 'desc')->paginate(5);
+        return view('packsPublic.index', compact('packs'));
     }
 
     /**
@@ -55,13 +57,13 @@ class PackController extends Controller
         return redirect()->route('packs.index')->with('mensaje', 'Producto Creado Correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pack $pack)
-    {
-        return view('packs.show', compact('pack'));
-    }
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(Pack $pack)
+    // {
+    //     return view('packs.show', compact('pack'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -118,7 +120,7 @@ class PackController extends Controller
     public function checkout()
     {
         $packs = Pack::orderby('id', 'desc')->paginate(5);
-        return view('packs.index', compact('packs'));
+        return view('packsPublic.index', compact('packs'));
     }
 
     public function session(Request $request)
@@ -127,7 +129,7 @@ class PackController extends Controller
 
         $productname = $request->get('productname');
         $totalprice = $request->get('total');
-        $total = $totalprice * 100; // Stripe requires amount in cents
+        $total = $totalprice * 100;
 
         $session = \Stripe\Checkout\Session::create([
             'line_items'  => [

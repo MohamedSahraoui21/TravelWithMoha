@@ -2,15 +2,15 @@
             <div class="bg-gray-100 min-h-screen flex items-center justify-center">
                 <div class="bg-white rounded-lg shadow-xl p-8 max-w-3xl w-full">
                     <h2
-                        class="text-3xl text-purple-600 font-bold text-center mb-8  transition duration-700
-                        transform hover:text-purple-700 hover:scale-110">
+                        class="text-3xl text-blue-600 font-bold text-center mb-8  transition duration-700
+                        transform hover:text-blue-700 hover:scale-110">
                         Bienvenido al Dashboard Mohamed
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Gestionar Posts -->
                         <a href="{{ route('posts.index') }}"
-                            class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-center p-6 text-white transition duration-300 ease-in-out transform hover:scale-105">
+                            class="bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-center p-6 text-white transition duration-300 ease-in-out transform hover:scale-105">
                             <div class="flex justify-center items-center mb-4">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="h-12 w-12 mr-4">
@@ -37,11 +37,11 @@
                                 </svg>
                                 <span class="text-xl">Gestionar Posts</span>
                             </div>
-                            <p class="text-sm">Administra y organiza tus artículos aquí.</p>
+                            <p class="text-sm">Administra y organiza tus posts aquí.</p>
                         </a>
                         <!-- Gestionar Posts -->
                         <a href="{{ route('packs.index') }}"
-                            class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-center p-6 text-white transition duration-300 ease-in-out transform hover:scale-105">
+                            class="bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-center p-6 text-white transition duration-300 ease-in-out transform hover:scale-105">
                             <div class="flex justify-center items-center mb-4">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="h-12 w-12 mr-4">

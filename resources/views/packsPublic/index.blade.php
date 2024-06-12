@@ -1,15 +1,11 @@
 <x-app-layout>
     <x-carpetaPrinc.principal>
 
-        <div class="flex justify-end mb-4">
-            @if (Auth::user()->isAdmin == 'SI')
-                <a href="{{ route('packs.create') }}">
-                    <br><br>
-                    <x-button>+ NUEVO</x-button>
-                </a>
-            @endif
-        </div>
 
+        <br><br>
+        <h1 class="text-3xl font-italic text-center text-gray-800 mb-8">
+            Tu próxima gran aventura te espera con <span class="text-blue-500">TravelWithMoha.com</span>
+        </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($packs as $item)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -27,15 +23,7 @@
                         <div class="mt-4 flex justify-end">
                             <a href="{{ route('show-pack', $item->id) }}" class="text-blue-500 hover:underline mr-2">Ver
                                 Detalles</a>
-                            @if (Auth::user()->isAdmin == 'SI')
-                                <a href="{{ route('packs.edit', $item->id) }}"
-                                    class="text-yellow-500 hover:underline mr-2">Editar</a>
-                                <form action="{{ route('packs.destroy', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
-                            @endif
-                            </form>
+
                         </div>
                         <form action="/session" method="POST" style="text-align: center;">
 

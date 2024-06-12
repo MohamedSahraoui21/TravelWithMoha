@@ -1,22 +1,29 @@
 <x-carpetaPrinc.principal>
-    <div class="lg:col-span-1 lg:w-1/3 lg:ml-auto">
-        <div class="bg-gradient-to-r from-indigo-400 to-purple-600 rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold text-white mb-4 " style="text-align: center">Meteo del Mundo</h2>
-            <div class="mb-4">
+    <br>
+    <div class="lg:col-span-1 lg:w-full lg:ml-0">
+        <div id="meteoContainer"
+            class="bg-gradient-to-r from-blue-400 to-cyan-600 rounded-lg shadow-md p-6 mb-6 flex flex-col items-center">
+            <div class="text-4xl text-yellow-300 mb-4">
+                <i class="fas fa-sun"></i>
+            </div>
+            <h2 class="text-xl font-semibold text-white mb-4" style="text-align: center">Meteo del Mundo</h2>
+            <div class="mb-4 w-full">
                 <input id="ciudadInput"
                     class="w-full px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
                     type="text" placeholder="Ingrese una ciudad">
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center w-full">
                 <button id="BtnBuscar"
-                    class="px-6 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none">Buscar</button>
+                    class="px-6 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-700 focus:outline-none">Buscar</button>
             </div>
-            <div id="weatherContainer" class="hidden mt-4">
+            <div id="weatherContainer" class="hidden mt-4 text-center w-full">
                 <h2 id="nombreCiudad" class="text-lg font-semibold text-white mb-2"></h2>
-                <div id="detallesTiempo"></div>
+                <div id="detallesTiempo" class="text-white"></div>
             </div>
         </div>
     </div>
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Explora Nuestros Artículos de Viaje</h2>
+
     <div>
         @if ($posts->count())
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -70,7 +77,7 @@
                                                     wire:model.defer="comentarios.{{ $post->id }}"
                                                     placeholder="Escribe un comentario..." />
                                                 <button wire:click="escribirComent({{ $post->id }})"
-                                                    class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition-colors duration-300">Enviar</button>
+                                                    class="bg-blue-800 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition-colors duration-300">Enviar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -83,9 +90,12 @@
                                             <div class="flex-1">
                                                 <h4 class="text-lg font-semibold">{{ $comment->user->name }}</h4>
                                                 <p class="text-sm text-gray-600">{{ $comment->content }}</p>
+                                                <p class="text-xs text-gray-500">
+                                                    {{ $comment->created_at->format('d M Y, H:i') }}</p>
+                                                <!-- Aquí añadimos la fecha de creación -->
                                             </div>
                                             @auth
-                                                @if ($comment->user_id === $usuario->id)
+                                                @if ($comment->user_id === $usuario->id || Auth::user()->isAdmin == 'SI')
                                                     <button wire:click="borrarComentario({{ $comment->id }})"
                                                         class="ml-4 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300">Borrar</button>
                                                 @endif
@@ -106,6 +116,10 @@
                     class="fa-solid fa-heart-crack text-xl mr-2"></i>No hay ningún artículo</p>
         @endif
     </div>
+
+
+
+
 </x-carpetaPrinc.principal>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -121,7 +135,8 @@
 
             if (ciudad !== "") {
                 fetch(
-                        `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
+                        `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`
+                    )
                     .then(response => response.json())
                     .then(data => {
                         detallesTiempo.innerHTML = `

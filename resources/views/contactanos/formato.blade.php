@@ -1,6 +1,6 @@
 <html lang="en">
 
-<body style="background-color:rgb(0, 251, 255)">
+<body style="background-color:rgb(241, 247, 247)">
     <h1>
         <center>Formulario de Contacto</center>
     </h1>

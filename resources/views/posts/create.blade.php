@@ -8,7 +8,7 @@
             <x-input for="titulo" name="titulo" placeholhder="titulo..." class="w-full" value="{{ old('titulo') }}" />
             <x-input-error for="titulo" />
             <x-label for="contenido" class="mt-4">Contenido</x-label>
-            <textarea name="contenido" id="contenido" class="w-full">{{ old('contenido') }}</textarea>
+            <textarea name="contenido" id="contenido" class="w-full col-span-3">{{ old('contenido') }}</textarea>
             <x-input-error for="contenido" />
 
             <div class="mb-6">

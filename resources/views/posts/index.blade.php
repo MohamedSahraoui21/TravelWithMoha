@@ -40,7 +40,8 @@
                 @endforeach
             </div>
         @else
-            <p>Todavía no hay Posts</p>
+            <p class="p-4 bg-zinc-500 text-white rounded-lg text-xl"><i
+                    class="fa-solid fa-heart-crack text-xl mr-2"></i>No hay ningún post</p>
         @endif
 
         <div class="mt-6">

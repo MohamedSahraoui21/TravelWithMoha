@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-    class="bg-gradient-to-r from-purple-400 to-indigo-600 border-b border-gray-100 fixed w-full z-10 top-0">
+    class="bg-blue-800 text-white to-indigo-600 border-b border-gray-100 fixed w-full z-10 top-0">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -14,27 +14,32 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:flex sm:ms-10">
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')" class="text-white">
-                        {{ __('Home') }}
+                        <i class="fas fa-home"></i> &nbsp; {{ __('Home') }}
                     </x-nav-link>
+
+
 
                     @auth
                         @if (Auth::user()->isAdmin == 'SI')
                             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white">
-                                {{ __('Dashboard') }}
+                                <i class="fas fa-tachometer-alt"></i> &nbsp; {{ __('Dashboard') }}
                             </x-nav-link>
                             <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')" class="text-white">
-                                {{ __('Posts') }}
+                                <i class="fas fa-pen"></i> &nbsp; {{ __('Posts') }}
                             </x-nav-link>
                             <x-nav-link href="{{ route('packs.index') }}" :active="request()->routeIs('packs.*')" class="text-white">
-                                {{ __('Packs') }}
+                                <i class="fas fa-sliders"></i> &nbsp; {{ __('Gestion Packs') }}
                             </x-nav-link>
                         @endif
                     @endauth
-                    <x-nav-link href="{{ route('contactanos.index') }}" :active="request()->routeIs('contactanos.*')" class="text-white">
-                        {{ __('Contactanos') }}
 
+                    <x-nav-link href="{{ route('packsPublic.index') }}" :active="request()->routeIs('packsPublic.index.*')" class="text-white">
+                        <i class="fas fa-plane"></i> &nbsp; {{ __('Packs') }}
                     </x-nav-link>
 
+                    <x-nav-link href="{{ route('contactanos.index') }}" :active="request()->routeIs('contactanos.*')" class="text-white">
+                        <i class="fas fa-envelope"></i> &nbsp; {{ __('Contáctanos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -115,8 +120,34 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white">
-                {{ __('Dashboard') }}
+
+
+            <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')" class="text-white">
+                <i class="fas fa-home"></i> &nbsp; {{ __('Home') }}
+            </x-responsive-nav-link>
+
+
+
+            @auth
+                @if (Auth::user()->isAdmin == 'SI')
+                    <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white">
+                        <i class="fas fa-tachometer-alt"></i> &nbsp; {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')" class="text-white">
+                        <i class="fas fa-pen"></i> &nbsp; {{ __('Posts') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{ route('packs.index') }}" :active="request()->routeIs('packs.*')" class="text-white">
+                        <i class="fas fa-sliders"></i> &nbsp; {{ __('Gestion Packs') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endauth
+
+            <x-responsive-nav-link href="{{ route('packsPublic.index') }}" :active="request()->routeIs('packsPublic.index.*')" class="text-white">
+                <i class="fas fa-plane"></i> &nbsp; {{ __('Packs') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('contactanos.index') }}" :active="request()->routeIs('contactanos.*')" class="text-white">
+                <i class="fas fa-envelope"></i> &nbsp; {{ __('Contáctanos') }}
             </x-responsive-nav-link>
         </div>
 
@@ -142,7 +173,8 @@
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                        <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')" class="text-white">
+                        <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')"
+                            class="text-white">
                             {{ __('API Tokens') }}
                         </x-responsive-nav-link>
                     @endif

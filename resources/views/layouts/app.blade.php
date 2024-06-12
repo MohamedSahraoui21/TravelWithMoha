@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TravelWithMoha</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -60,5 +60,34 @@
         </script>
     @endif
 </body>
+<footer class="bg-blue-800 text-white mt-8">
+
+    <div class="py-8">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <img src="{{ Storage::url('pngLogo.png') }}" alt="Logo" style="height: 100px; margin-bottom: 10px;"
+                    class="mx-auto">
+                <p class="text-lg">Copyright © 2024 | TravelWithMoha.com</p>
+            </div>
+            <div class="mb-4">
+                <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank"
+                    rel="license noopener noreferrer" class="text-white hover:text-gray-400">
+                    Licensed under CC BY-NC-ND 4.0
+
+                </a>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.facebook.com/mohamedSh21/" class="text-white hover:text-gray-400"
+                    target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UCZ0xgxvuaTnmkrO0UudfgCA"
+                    class="text-white hover:text-gray-400" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                <a href="https://www.instagram.com/" class="text-white hover:text-gray-400" target="_blank"><i
+                        class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.linkedin.com/in/mohamed-sahraoui-1a4928293/" class="text-white hover:text-gray-400"
+                    target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </html>

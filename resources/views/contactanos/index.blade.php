@@ -46,7 +46,7 @@
                             class="block text-sm font-medium text-gray-700 dark:text-gray-200">Contenido</label>
                         <textarea id="contenido" rows='5'
                             class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary"
-                            name="contenido">{{ old('contenido') }}</textarea>
+                            name="contenido">{{ old('contenido') }} </textarea>
 
                         <x-input-error for="contenido" class="mt-1" />
                     </div>
