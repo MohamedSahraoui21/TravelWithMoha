@@ -90,7 +90,7 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 - Navega por los artículos de viajes y explora los packs de viajes disponibles.
 - Realiza compras seguras a través de la integración con Stripe.
 
-  ## Despliegue :rocket:
+ ## Despliegue :rocket:
 [Página principal](http://ec2-3-227-110-125.compute-1.amazonaws.com/).
 
  ## Versionado  :open_file_folder:
