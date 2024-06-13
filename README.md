@@ -90,16 +90,21 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 - Navega por los artículos de viajes y explora los packs de viajes disponibles.
 - Realiza compras seguras a través de la integración con Stripe.
 
-## Contribución 🤝
+  ## Despliegue :rocket:
+[Página principal](http://ec2-3-227-110-125.compute-1.amazonaws.com/).
 
-Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+ ## Versionado  :open_file_folder:
 
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tu característica (`git checkout -b feature/nueva-caracteristica`).
-3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva característica'`).
-4. Haz push a la rama (`git push origin feature/nueva-caracteristica`).
-5. Abre un Pull Request.
+#### Versión 1.0.1
 
-## Licencia 📄
+## Autores :smiley:
+Este proyecto fue creado por Mohamed Sahraoui y ha recibido contribuciones de apasionados por el diseño web. 
 
-Este proyecto está licenciado bajo la Licencia Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0). Consulta el archivo [LICENSE](LICENSE) para más detalles.
+## Licencia :closed_lock_with_key: 
+ Este proyecto está bajo  la Licencia Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) - Copyright (c) 2024 [MOHAMED SAHRAOUI]
+
+## Recursos Adicionales :mortar_board:
+- [Página de GitHub](https://github.com/MohamedSahraoui21)
+- [Mi LinkedIn](https://www.linkedin.com/in/mohamed-sahraoui-1a4928293/)
+
+
