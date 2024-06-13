@@ -17,7 +17,7 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 
 ## Capturas de Pantalla 📸
 
-![Página Principal](public/30.png) 
+![Página Principal](public/30.PNG) 
 *Captura de la página principal del blog de viajes.*
 
 ![Tienda en Línea](public/31.png) 
