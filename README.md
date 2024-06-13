@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TravelWithMoha
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![TravelWithMoha Logo](https://via.placeholder.com/150) <!-- Reemplaza con el enlace de tu logo -->
 
-## About Laravel
+Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes y una tienda en línea. Aquí comparto mis experiencias de viajes por más de 10 países diferentes y ofrezco paquetes de viaje para facilitar el viaje a cualquier persona apasionada por explorar el mundo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Características ✨
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Blog de viajes** 📝: Artículos y relatos de mis experiencias en más de 10 países diferentes.
+- **Tienda en línea** 🛒: Ofrecemos packs de viajes personalizados para facilitar la organización de tus aventuras.
+- **Pago seguro** 🔒: Integración con Stripe para asegurar transacciones seguras.
+- **Tecnologías utilizadas**:
+  - **Laravel 10**: Framework backend para la construcción de la aplicación.
+  - **HTML & CSS**: Estructura y estilos básicos.
+  - **Tailwind CSS**: Framework de CSS para un diseño moderno y responsivo.
+  - **JavaScript**: Funcionalidades interactivas en el frontend.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Capturas de Pantalla 📸
 
-## Learning Laravel
+![Página Principal](https://via.placeholder.com/800x400) <!-- Reemplaza con una captura de tu página principal -->
+*Captura de la página principal del blog de viajes.*
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Tienda en Línea](https://via.placeholder.com/800x400) <!-- Reemplaza con una captura de tu tienda -->
+*Captura de la tienda en línea con packs de viaje.*
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Requisitos ⚙️
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP >= 8.0
+- Composer
+- Node.js
+- MySQL
 
-## Laravel Sponsors
+## Instalación 🚀
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Clona el repositorio:
 
-### Premium Partners
+    ```bash
+    git clone https://github.com/tuusuario/TravelWithMoha.git
+    cd TravelWithMoha
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. Instala las dependencias de PHP:
 
-## Contributing
+    ```bash
+    composer install
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Instala las dependencias de Node.js:
 
-## Code of Conduct
+    ```bash
+    npm install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Crea un archivo `.env` basado en `.env.example` y configura tu entorno:
 
-## Security Vulnerabilities
+    ```bash
+    cp .env.example .env
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Genera una clave de aplicación:
 
-## License
+    ```bash
+    php artisan key:generate
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6. Configura tu base de datos en el archivo `.env` y luego ejecuta las migraciones:
+
+    ```bash
+    php artisan migrate
+    ```
+
+7. Compila los assets de frontend:
+
+    ```bash
+    npm run dev
+    ```
+
+8. Inicia el servidor de desarrollo:
+
+    ```bash
+    php artisan serve
+    ```
+
+## Uso 🛠️
+
+- Accede a la aplicación en `http://localhost:8000` para ver el blog y la tienda.
+- Navega por los artículos de viajes y explora los packs de viajes disponibles.
+- Realiza compras seguras a través de la integración con Stripe.
+
+## Contribución 🤝
+
+Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama para tu característica (`git checkout -b feature/nueva-caracteristica`).
+3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva característica'`).
+4. Haz push a la rama (`git push origin feature/nueva-caracteristica`).
+5. Abre un Pull Request.
+
+## Licencia 📄
+
+Este proyecto está licenciado bajo la Licencia Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0). Consulta el archivo [LICENSE](LICENSE) para más detalles.
