@@ -31,7 +31,7 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 - PHP >= 8.0
 - Composer
 - Node.js
-- MySQL
+- Sqlite
 
 ## Instalación 🚀
 
