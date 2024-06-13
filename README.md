@@ -20,10 +20,10 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 ![Página Principal](public/30.PNG) 
 *Captura de la página principal del blog de viajes.*
 
-![Tienda en Línea](public/31.png) 
+![Tienda en Línea](public/31.PNG) 
 *Captura de la tienda en línea con packs de viaje.*
 
-![Pagina de contacto](public/32.png)
+![Pagina de contacto](public/32.PNG)
 *Formulario para el contacto.*
 
 ## Requisitos ⚙️
