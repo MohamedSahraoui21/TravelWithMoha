@@ -1,6 +1,6 @@
 # TravelWithMoha
 
-![TravelWithMoha Logo](https://via.placeholder.com/150) <!-- Reemplaza con el enlace de tu logo -->
+![TravelWithMoha Logo](TravelWithMoha/public/pngLogo.png) 
 
 Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes y una tienda en línea. Aquí comparto mis experiencias de viajes por más de 10 países diferentes y ofrezco paquetes de viaje para facilitar el viaje a cualquier persona apasionada por explorar el mundo.
 
