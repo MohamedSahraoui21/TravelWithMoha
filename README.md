@@ -17,11 +17,14 @@ Bienvenido a **TravelWithMoha** 🌍, un proyecto que combina un blog de viajes 
 
 ## Capturas de Pantalla 📸
 
-![Página Principal](https://via.placeholder.com/800x400) <!-- Reemplaza con una captura de tu página principal -->
+![Página Principal](public/30.png) 
 *Captura de la página principal del blog de viajes.*
 
-![Tienda en Línea](https://via.placeholder.com/800x400) <!-- Reemplaza con una captura de tu tienda -->
+![Tienda en Línea](public/31.png) 
 *Captura de la tienda en línea con packs de viaje.*
+
+![Pagina de contacto](public/32.png)
+*Formulario para el contacto.*
 
 ## Requisitos ⚙️
 
